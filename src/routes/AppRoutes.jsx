@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route,Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import Layout from "../components/layout/Layout";
 import MethodContainer from "../containers/MethodContainer";
@@ -9,24 +9,24 @@ import Home from "../pages/Home";
 
 const AppRoutes = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/category" element={<Category />}>
-            <Route index element={<Navigate to="/category/Arrays" replace />} />
-            <Route path=":categoryName" element={<CategoryContainer />} />
-            <Route
-              path=":categoryName/:methodTitle"
-              element={<MethodContainer />}
-            />
-          </Route>
-          <Route path="/document" element={<DocumentContainer />}></Route>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
+
+        <Route path="/category" element={<Category />}>
+          <Route index element={<Navigate to="/category/Arrays" replace />} />
+          <Route path=":categoryName" element={<CategoryContainer />} />
+          <Route
+            path=":categoryName/:methodTitle"
+            element={<MethodContainer />}
+          />
         </Route>
 
-        <Route path="*" element={"Not Found"} />
-      </Routes>
-    </BrowserRouter>
+        <Route path="/document" element={<DocumentContainer />} />
+      </Route>
+
+      <Route path="*" element={"Not Found"} />
+    </Routes>
   );
 };
 
